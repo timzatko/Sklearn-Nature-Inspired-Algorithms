@@ -1,1 +1,1 @@
-# Sklearn-Nature-Inspired-Search
+# Nature Inspired Algorithms for scikit-learn
