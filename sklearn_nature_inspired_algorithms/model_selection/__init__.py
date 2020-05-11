@@ -1,1 +1,1 @@
-from .nature_inspired_search import NatureInspiredSearch
+from .nature_inspired_search_cv import NatureInspiredSearchCV
