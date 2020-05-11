@@ -7,7 +7,7 @@ def get_suite():
     suite = unittest.TestSuite()
 
     suite.addTest(NatureInspiredSearchTestCase())
-    suite.addTest(HelpersTestCase())
+    suite.addTest(ParamGridTestCase())
 
     return suite
 

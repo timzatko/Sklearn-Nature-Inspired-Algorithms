@@ -1,2 +1,2 @@
-from .helpers_test_case import *
-from .nature_inspired_search_test_case import *
+from .param_grid_test_case import ParamGridTestCase
+from .nature_inspired_search_test_case import NatureInspiredSearchTestCase
