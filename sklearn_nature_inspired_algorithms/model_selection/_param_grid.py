@@ -2,6 +2,8 @@ import math
 
 
 class ParamGrid:
+    __keys = []
+
     param_grid = None
 
     key_to_index_map = {}
@@ -16,8 +18,15 @@ class ParamGrid:
         param_grid_key_indices = tuple(param_grid.keys())
 
         for index, key in enumerate(param_grid_key_indices):
+            self.__keys.append(key)
             self.key_to_index_map[key] = index
             self.index_to_key_map[index] = key
+
+    def __len__(self):
+        return len(self.param_grid)
+
+    def keys(self):
+        return tuple(self.__keys)
 
     def get_params_from_solution_vec(self, solution_vec):
         params = {}
