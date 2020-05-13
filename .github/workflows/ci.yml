@@ -46,11 +46,11 @@ jobs:
       with:
         name: build
     - name: Prepare environment
-        run: |
-          chmod +x ./ci/prepare_env.sh && ./ci/prepare_env.sh
+      run: |
+        chmod +x ./ci/prepare_env.sh && ./ci/prepare_env.sh
     - name: Install dependencies
-        run: |
-          poetry install
+      run: |
+        poetry install
     - name: Deploy to pypi.org
       run: |
         ls -la build
