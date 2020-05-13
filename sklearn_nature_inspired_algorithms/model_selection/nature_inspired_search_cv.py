@@ -13,6 +13,8 @@ class NatureInspiredSearchCV(BaseSearchCV):
     __param_grid = None
 
     def _run_search(self, evaluate_candidates):
+        self.__print_run_search_log()
+
         benchmark = ParameterSearchBenchmark(evaluate_candidates, self.__param_grid)
 
         task = StagnationStoppingTask(
@@ -23,6 +25,8 @@ class NatureInspiredSearchCV(BaseSearchCV):
         )
 
         algorithm = FireflyAlgorithm()
+        algorithm.setParameters(NP=40)
+
         algorithm.run(task=task)
 
     def __init__(self, estimator, param_grid, max_n_gen=100, max_stagnating_gen=5, scoring=None, n_jobs=None, iid='deprecated', refit=True, cv=None, verbose=0,
@@ -33,3 +37,13 @@ class NatureInspiredSearchCV(BaseSearchCV):
         self.__n_gen = max_n_gen
         self.__max_stagnating_gen = max_stagnating_gen
         self.__param_grid = ParamGrid(param_grid)
+
+    def __print_run_search_log(self):
+        candidates = self.__param_grid.get_number_of_candidates()
+
+        if self.cv is not None:
+            print(f'Fitting {self.cv} folds for some of the {candidates} candidates, '
+                  f'which might total in {candidates * self.cv} fits')
+        else:
+            print(f'Fitting at most {candidates} candidates')
+

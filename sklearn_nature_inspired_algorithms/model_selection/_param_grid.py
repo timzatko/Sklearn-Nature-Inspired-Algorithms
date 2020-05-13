@@ -1,4 +1,5 @@
 import math
+import numpy as np
 
 
 class ParamGrid:
@@ -27,6 +28,12 @@ class ParamGrid:
 
     def keys(self):
         return tuple(self.__keys)
+
+    def values(self):
+        return self.param_grid.values()
+
+    def get_number_of_candidates(self):
+        return np.multiply.reduce([len(value) for value in self.param_grid.values()])
 
     def get_params_from_solution_vec(self, solution_vec):
         params = {}
