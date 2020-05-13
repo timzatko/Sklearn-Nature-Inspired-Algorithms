@@ -1,6 +1,6 @@
 import unittest
 
-from sklearn_nature_inspired_algorithms.model_selection._param_grid import *
+from sklearn_nature_inspired_algorithms.model_selection._param_grid import ParamGrid
 
 
 class ParamGridTestCase(unittest.TestCase):

@@ -1,6 +1,6 @@
 import unittest
 
-from .model_selection import *
+from .model_selection import NatureInspiredSearchTestCase, ParamGridTestCase
 
 
 def get_suite():

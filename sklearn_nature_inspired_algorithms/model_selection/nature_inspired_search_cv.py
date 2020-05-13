@@ -46,4 +46,3 @@ class NatureInspiredSearchCV(BaseSearchCV):
                   f'which might total in {candidates * self.cv} fits')
         else:
             print(f'Fitting at most {candidates} candidates')
-
