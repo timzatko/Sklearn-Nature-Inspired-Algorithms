@@ -17,3 +17,7 @@ You need to install [Poetry](https://python-poetry.org/docs/#introduction) on yo
 $ poetry install
 $ poetry run python -m unittest tests
 ```
+
+### Branching strategy
+
+This repository follows _trunk based development branching strategy_. You can read more about it [here](https://trunkbaseddevelopment.com/).
