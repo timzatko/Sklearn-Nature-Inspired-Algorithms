@@ -14,7 +14,7 @@ readme = 'README.md'  # Markdown files are supported
 repository = "https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms"
 homepage = "https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms"
 
-keywords = ['sklearn', 'nature', 'inspired', 'algorithms']
+keywords = ['sklearn', 'scikit-learn', 'nature-inspired-algorithms', 'hyper-parameter-tuning']
 
 [tool.poetry.dependencies]
 python = "^3.5"  # Compatible python versions must be declared here
