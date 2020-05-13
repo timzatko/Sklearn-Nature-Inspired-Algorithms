@@ -4,11 +4,8 @@ from sklearn_nature_inspired_algorithms.model_selection import NatureInspiredSea
 
 
 class NatureInspiredSearchTestCase(unittest.TestCase):
-    def setUp(self):
-        self.search = NatureInspiredSearchCV(None, None)
-
     def test_instantiate(self):
-        self.search = NatureInspiredSearchCV(None, None)
+        self.search = NatureInspiredSearchCV(None, {})
 
         self.assertIsNotNone(self.search)
 
