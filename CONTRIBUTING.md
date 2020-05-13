@@ -15,5 +15,5 @@ You need to install [Poetry](https://python-poetry.org/docs/#introduction) on yo
 
 ```shell script
 $ poetry install
-$ python -m unittest tests
+$ poetry run python -m unittest tests
 ```
