@@ -43,7 +43,7 @@ Use [semantic versioning](https://semver.org/) for versions.
 1. Create and push a tag 
     ```shell script
     git tag v0.1.1
-     git push --tags
+    git push --tags
     ```
    This will trigger a pipeline which will make a draft release.
 1. Publish the draft release, don't forget to edit release notes. Publishing the release will trigger the release pipeline which will publish the package to the [pypi](pypi.org) registry. 
