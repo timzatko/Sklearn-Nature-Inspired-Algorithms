@@ -1,15 +1,17 @@
 name: CI
 
-on: [push]
+on:
+  branches:
+    - *
+  tags:
+    - v*
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
     strategy:
       matrix:
         python-version: [3.8]
-
     steps:
     - uses: actions/checkout@v2
     - name: Set up Python ${{ matrix.python-version }}
@@ -28,3 +30,13 @@ jobs:
     - name: Tests
       run: |
         poetry run python -m unittest tests
+
+  deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+    - uses: actions/checkout@v2
+    - name: Deploy
+      run: |
+        which python
+
