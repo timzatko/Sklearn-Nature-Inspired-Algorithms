@@ -29,8 +29,11 @@ jobs:
       run: |
         poetry run flake8 ./tests ./sklearn_nature_inspired_algorithms
     - name: Tests
+      env:
+        COVERALLS_REPO_TOKEN: ${{ secrets.COVERALLS_REPO_TOKEN }}
       run: |
-        poetry run python -m unittest tests
+        poetry run coverage run --source=./sklearn_nature_inspired_algorithms -m unittest tests
+        poetry run coverage report
     - name: Build
       run: |
         poetry build

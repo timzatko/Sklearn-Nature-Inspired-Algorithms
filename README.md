@@ -8,12 +8,10 @@ Nature inspired algorithms for hyper-parameter tuning in [scikit-learn](https://
 
 ## Installation
 
-Install with [pip](https://pypi.org/project/pip/).
-
 ```shell script
 pip install sklearn-nature-inspired-algorithms
 ```
 
-## Contributing
+## Contributing 
 
 Detailed information on the contribution guidelines are in the [CONTRIBUTING.md](./CONTRIBUTING.md).

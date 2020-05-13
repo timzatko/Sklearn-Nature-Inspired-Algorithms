@@ -18,6 +18,13 @@ $ poetry install
 $ poetry run python -m unittest tests
 ```
 
+You can also run tests with test coverage and then print out the report.
+
+```shell script
+poetry run coverage run --source=./sklearn_nature_inspired_algorithms -m unittest tests
+poetry run coverage report -m
+```
+
 ### Branching strategy
 
 This repository follows _trunk based development branching strategy_. You can read more about it [here](https://trunkbaseddevelopment.com/).
