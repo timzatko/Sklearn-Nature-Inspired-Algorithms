@@ -4,7 +4,7 @@
 [![PyPI version](https://badge.fury.io/py/sklearn-nature-inspired-algorithms.svg)](https://pypi.org/project/sklearn-nature-inspired-algorithms/)
 [![PyPI downloads](https://img.shields.io/pypi/dm/sklearn-nature-inspired-algorithms)](https://pypi.org/project/sklearn-nature-inspired-algorithms/)
  
-Nature inspired algorithms for hyper-parameter tuning in [scikit-learn](https://github.com/scikit-learn/scikit-learn). This package uses algorithms implementation from [NiaPy](https://github.com/NiaOrg/NiaPy). 
+Nature inspired algorithms for hyper-parameter tuning of [scikit-learn](https://github.com/scikit-learn/scikit-learn) models. This package uses algorithms implementation from [NiaPy](https://github.com/NiaOrg/NiaPy). 
 
 ## Installation
 
