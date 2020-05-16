@@ -34,7 +34,7 @@ nia_search = NatureInspiredSearchCV(
     clf,
     param_grid,
     algorithm='ba', # bat algorithm
-    population_size='15',
+    population_size=15,
     max_n_gen=30,
     max_stagnating_gen=2,
 )
@@ -60,7 +60,7 @@ nia_search = NatureInspiredSearchCV(
     clf,
     param_grid,
     algorithm=algorithm,
-    population_size='15',
+    population_size=15,
     max_n_gen=30,
     max_stagnating_gen=2,
 )
