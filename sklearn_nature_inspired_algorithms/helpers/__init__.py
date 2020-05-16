@@ -1,1 +1,2 @@
 from .score_by_generation_violinplot import score_by_generation_violinplot
+from .score_by_generation_lineplot import score_by_generation_lineplot
