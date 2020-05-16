@@ -5,10 +5,11 @@ from ._parameter_search_benchmark import ParameterSearchBenchmark
 from ._stagnation_stopping_task import StagnationStoppingTask
 
 from NiaPy.algorithms.basic import FireflyAlgorithm, BatAlgorithm, GreyWolfOptimizer
+from NiaPy.algorithms.modified import HybridBatAlgorithm, HybridSelfAdaptiveBatAlgorithm
 
 from sklearn.model_selection._search import BaseSearchCV
 
-SUPPORTED_ALGORITHMS = ['fa', 'gwo', 'ba']
+SUPPORTED_ALGORITHMS = ['fa', 'gwo', 'ba', 'hba', 'hsaba']
 
 
 class NatureInspiredSearchCV(BaseSearchCV):
@@ -31,7 +32,7 @@ class NatureInspiredSearchCV(BaseSearchCV):
         # invert scores in the optimization logs
         self.optimization_logs_ = [(log[0], log[1] * -1) for log in task.optimization_logs_]
 
-    def __init__(self, estimator, param_grid, algorithm='ba', population_size=15, max_n_gen=25,
+    def __init__(self, estimator, param_grid, algorithm='hba', population_size=15, max_n_gen=25,
                  max_stagnating_gen=2, scoring=None, n_jobs=None, iid='deprecated', refit=True, cv=None, verbose=0,
                  pre_dispatch='2*n_jobs', error_score=np.nan, return_train_score=True):
         super().__init__(estimator, scoring, n_jobs, iid, refit, cv, verbose, pre_dispatch, error_score,
@@ -63,8 +64,16 @@ class NatureInspiredSearchCV(BaseSearchCV):
 
             if algorithm == 'fa':
                 algorithm_obj = FireflyAlgorithm()
+                algorithm_obj.setParameters(alpha=1, betamin=1, gamma=2)
             elif algorithm == 'ba':
                 algorithm_obj = BatAlgorithm()
+                algorithm_obj.setParameters(A=0.9, r=0.1, Qmin=0.0, Qmax=2.0)
+            elif algorithm == 'hba':
+                algorithm_obj = HybridBatAlgorithm()
+                algorithm_obj.setParameters(A=0.9, r=0.1, Qmin=0.0, Qmax=2.0)
+            elif algorithm == 'hsaba':
+                algorithm_obj = HybridSelfAdaptiveBatAlgorithm()
+                algorithm_obj.setParameters(A=0.9, r=0.1, Qmin=0.0, Qmax=2.0)
             elif algorithm == 'gwo':
                 algorithm_obj = GreyWolfOptimizer()
 
