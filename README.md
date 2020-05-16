@@ -33,10 +33,10 @@ clf = RandomForestClassifier(random_state=42)
 nia_search = NatureInspiredSearchCV(
     clf,
     param_grid,
-    algorithm='fa', # firefly algorithm
-    population_size='25',
-    max_n_gen=100,
-    max_stagnating_gen=5,
+    algorithm='ba', # bat algorithm
+    population_size='15',
+    max_n_gen=30,
+    max_stagnating_gen=2,
 )
 
 nia_search.fit(X_train, y_train)
@@ -51,15 +51,7 @@ This will allow you to have more control of the algorithm behaviour.
 Refer to their [documentation](https://niapy.readthedocs.io/en/latest/) and [examples](https://github.com/NiaOrg/NiaPy/tree/master/examples) for the usage. 
 
 ```python
-from sklearn_nature_inspired_algorithms.model_selection import NatureInspiredSearchCV
-
 from NiaPy.algorithms.basic import GeneticAlgorithm
-
-param_grid = { 
-    'n_estimators': range(20, 100, 20), 
-    'max_depth': range(2, 20, 2),
-    'min_samples_split': range(2, 20, 2), 
-}
 
 algorithm = GeneticAlgorithm()
 algorithm.setParameters(NP=50, Ts=5, Mr=0.25)
@@ -68,8 +60,9 @@ nia_search = NatureInspiredSearchCV(
     clf,
     param_grid,
     algorithm=algorithm,
-    max_n_gen=100,
-    max_stagnating_gen=5,
+    population_size='15',
+    max_n_gen=30,
+    max_stagnating_gen=2,
 )
 
 nia_search.fit(X_train, y_train)
