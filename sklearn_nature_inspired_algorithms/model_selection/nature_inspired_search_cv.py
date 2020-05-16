@@ -28,6 +28,7 @@ class NatureInspiredSearchCV(BaseSearchCV):
         )
 
         self.__algorithm.run(task=task)
+        self.optimization_logs_ = task.optimization_logs_
 
     def __init__(self, estimator, param_grid, algorithm='fa', population_size=25, max_n_gen=100,
                  max_stagnating_gen=5, scoring=None, n_jobs=None, iid='deprecated', refit=True, cv=None, verbose=0,
@@ -39,6 +40,8 @@ class NatureInspiredSearchCV(BaseSearchCV):
         self.__max_stagnating_gen = max_stagnating_gen
         self.__param_grid = ParamGrid(param_grid)
         self.__algorithm = self.__get_algorithm(algorithm, population_size)
+
+        self.optimization_logs_ = None
 
     def __print_run_search_log(self):
         candidates = self.__param_grid.get_number_of_candidates()

@@ -20,6 +20,14 @@ class StagnationStoppingTask(StoppingTask):
 
         self.max_stagnating_gen = max_stagnating_gen
 
+        # logs array of (generation, score)
+        self.optimization_logs_ = []
+
+    def eval(self, A):
+        x_f = super().eval(A)
+        self.optimization_logs_.append((self.Iters, x_f))
+        return x_f
+
     def stopCond(self):
         if self.max_stagnating_gen is not None:
             # the better score is "lower" since the optimization type is "MINIMIZATION"
