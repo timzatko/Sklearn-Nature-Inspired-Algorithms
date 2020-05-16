@@ -22,7 +22,7 @@ def score_by_generation_lineplot(nia_search, **kwargs):
             data.append((generation, metric, score))
 
     new_df = pd.DataFrame(data, columns=['generation', 'metric', 'score'])
-    new_df = new_df[new_df['metric'].contains(metrics)]
+    new_df = new_df[new_df['metric'].isin(metrics)]
 
     ax = kwargs.get('ax', None)
     ylim = kwargs.get('ylim', None)
