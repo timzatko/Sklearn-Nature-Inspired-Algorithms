@@ -3,7 +3,6 @@ from NiaPy.task import StoppingTask, OptimizationType
 
 class StagnationStoppingTask(StoppingTask):
     prev_x_f = None
-    stagnation_gen_count = 0
 
     def __init__(self, max_stagnating_gen=None, **kwargs):
         super().__init__(**kwargs,
@@ -23,21 +22,34 @@ class StagnationStoppingTask(StoppingTask):
         # logs array of (generation, score)
         self.optimization_logs_ = []
 
+        self.stagnating_gen_count = 0
+        self.stagnating_gen_eval_count = 0
+        self.is_stagnating = False
+
+    def eval_stagnation(self):
+        # the better score is "lower" since the optimization type is "MINIMIZATION"
+        if self.prev_x_f is None or self.x_f < self.prev_x_f:
+            self.prev_x_f = self.x_f
+            self.stagnating_gen_count = 0
+        else:
+            self.stagnating_gen_count += 1
+
+        if self.stagnating_gen_count >= self.max_stagnating_gen:
+            self.is_stagnating = True
+
     def eval(self, A):
         x_f = super().eval(A)
         self.optimization_logs_.append((self.Iters, x_f))
         return x_f
 
     def stopCond(self):
-        if self.max_stagnating_gen is not None:
-            # the better score is "lower" since the optimization type is "MINIMIZATION"
-            if self.prev_x_f is None or self.x_f < self.prev_x_f:
-                self.prev_x_f = self.x_f
-                self.stagnation_gen_count = 0
-            else:
-                self.stagnation_gen_count += 1
-
-            if self.stagnation_gen_count >= self.max_stagnating_gen:
-                return True
+        if self.is_stagnating:
+            return True
 
         return super().stopCond()
+
+    def nextIter(self):
+        super().nextIter()
+
+        if self.max_stagnating_gen:
+            self.eval_stagnation()
