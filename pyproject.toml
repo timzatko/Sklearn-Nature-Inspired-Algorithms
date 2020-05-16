@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sklearn_nature_inspired_algorithms"
-version = "v0.2.2"
+version = "v0.3.0"
 description = "Search using nature inspired algorithms over specified parameter values for an sklearn estimator."
 
 license = "MIT"
