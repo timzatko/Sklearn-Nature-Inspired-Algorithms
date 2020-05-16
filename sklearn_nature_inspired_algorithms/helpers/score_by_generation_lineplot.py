@@ -18,11 +18,12 @@ def score_by_generation_lineplot(nia_search, **kwargs):
     new_df = pd.DataFrame(data, columns=['generation', 'aggregate', 'score'])
 
     ax = kwargs.get('ax', None)
-    ylim = kwargs.get('ylim', (0, 1))
+    ylim = kwargs.get('ylim', None)
 
     if ax is None:
         _, ax = plt.subplots()
 
-    ax.set(ylim=ylim)
+    if ylim is not None:
+        ax.set(ylim=ylim)
 
     return sns.lineplot(x="generation", y="score", data=new_df, hue='aggregate')
