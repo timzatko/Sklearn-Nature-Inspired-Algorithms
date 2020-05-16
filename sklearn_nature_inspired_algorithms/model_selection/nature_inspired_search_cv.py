@@ -32,8 +32,8 @@ class NatureInspiredSearchCV(BaseSearchCV):
         # invert scores in the optimization logs
         self.optimization_logs_ = [(log[0], log[1] * -1) for log in task.optimization_logs_]
 
-    def __init__(self, estimator, param_grid, algorithm='hba', population_size=15, max_n_gen=25,
-                 max_stagnating_gen=2, scoring=None, n_jobs=None, iid='deprecated', refit=True, cv=None, verbose=0,
+    def __init__(self, estimator, param_grid, algorithm='hba', population_size=50, max_n_gen=100,
+                 max_stagnating_gen=20, scoring=None, n_jobs=None, iid='deprecated', refit=True, cv=None, verbose=0,
                  pre_dispatch='2*n_jobs', error_score=np.nan, return_train_score=True):
         super().__init__(estimator, scoring, n_jobs, iid, refit, cv, verbose, pre_dispatch, error_score,
                          return_train_score)
