@@ -28,7 +28,8 @@ class NatureInspiredSearchCV(BaseSearchCV):
         )
 
         self.__algorithm.run(task=task)
-        self.optimization_logs_ = task.optimization_logs_
+        # invert scores in the optimization logs
+        self.optimization_logs_ = [(log[0], log[1] * -1) for log in task.optimization_logs_]
 
     def __init__(self, estimator, param_grid, algorithm='fa', population_size=15, max_n_gen=25,
                  max_stagnating_gen=2, scoring=None, n_jobs=None, iid='deprecated', refit=True, cv=None, verbose=0,
