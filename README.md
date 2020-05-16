@@ -24,8 +24,9 @@ from sklearn.ensemble import RandomForestClassifier
 
 param_grid = { 
     'n_estimators': range(20, 100, 20), 
-    'max_depth': range(2, 20, 2),
+    'max_depth': range(2, 40, 2),
     'min_samples_split': range(2, 20, 2), 
+    'max_features': ["auto", "sqrt", "log2"],
 }
 
 clf = RandomForestClassifier(random_state=42)
@@ -33,10 +34,10 @@ clf = RandomForestClassifier(random_state=42)
 nia_search = NatureInspiredSearchCV(
     clf,
     param_grid,
-    algorithm='ba', # bat algorithm
-    population_size=15,
-    max_n_gen=30,
-    max_stagnating_gen=2,
+    algorithm='hba', # hybrid bat algorithm
+    population_size=50,
+    max_n_gen=100,
+    max_stagnating_gen=10,
 )
 
 nia_search.fit(X_train, y_train)
@@ -60,9 +61,9 @@ nia_search = NatureInspiredSearchCV(
     clf,
     param_grid,
     algorithm=algorithm,
-    population_size=15,
-    max_n_gen=30,
-    max_stagnating_gen=2,
+    population_size=50,
+    max_n_gen=100,
+    max_stagnating_gen=20,
 )
 
 nia_search.fit(X_train, y_train)
