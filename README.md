@@ -38,6 +38,7 @@ nia_search = NatureInspiredSearchCV(
     population_size=50,
     max_n_gen=100,
     max_stagnating_gen=10,
+    runs=3,
 )
 
 nia_search.fit(X_train, y_train)
@@ -64,6 +65,7 @@ nia_search = NatureInspiredSearchCV(
     population_size=50,
     max_n_gen=100,
     max_stagnating_gen=20,
+    runs=3,
 )
 
 nia_search.fit(X_train, y_train)

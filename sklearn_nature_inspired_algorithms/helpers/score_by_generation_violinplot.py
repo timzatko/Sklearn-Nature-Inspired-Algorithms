@@ -4,11 +4,11 @@ import pandas as pd
 import matplotlib.pyplot as plt
 
 
-def score_by_generation_violinplot(nia_search, **kwargs):
-    df = pd.DataFrame(nia_search.optimization_logs_, columns=['generation', 'score'])
+def score_by_generation_violinplot(nia_search, run=0, ax=None, ylim=None):
+    if run >= len(nia_search.optimization_logs_):
+        raise ValueError(f'Specified run ({run}) does not exist!')
 
-    ax = kwargs.get('ax', None)
-    ylim = kwargs.get('ylim', None)
+    df = pd.DataFrame(nia_search.optimization_logs_[run], columns=['generation', 'score'])
 
     if ax is None:
         _, ax = plt.subplots()

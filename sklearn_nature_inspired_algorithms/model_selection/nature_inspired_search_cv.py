@@ -21,18 +21,21 @@ class NatureInspiredSearchCV(BaseSearchCV):
 
         benchmark = ParameterSearchBenchmark(evaluate_candidates, self.__param_grid)
 
-        task = StagnationStoppingTask(
-            length=len(self.__param_grid),
-            n_gen=self.__n_gen,
-            max_stagnating_gen=self.__max_stagnating_gen,
-            benchmark=benchmark
-        )
+        self.optimization_logs_ = []
 
-        self.__algorithm.run(task=task)
-        # invert scores in the optimization logs
-        self.optimization_logs_ = [(log[0], log[1] * -1) for log in task.optimization_logs_]
+        for _ in range(0, self.runs_):
+            task = StagnationStoppingTask(
+                length=len(self.__param_grid),
+                n_gen=self.__n_gen,
+                max_stagnating_gen=self.__max_stagnating_gen,
+                benchmark=benchmark
+            )
 
-    def __init__(self, estimator, param_grid, algorithm='hba', population_size=50, max_n_gen=100,
+            self.__algorithm.run(task=task)
+            # invert scores in the optimization logs
+            self.optimization_logs_.append([(log[0], log[1] * -1) for log in task.optimization_logs_])
+
+    def __init__(self, estimator, param_grid, algorithm='hba', population_size=50, max_n_gen=100, runs=3,
                  max_stagnating_gen=20, scoring=None, n_jobs=None, iid='deprecated', refit=True, cv=None, verbose=0,
                  pre_dispatch='2*n_jobs', error_score=np.nan, return_train_score=True):
         super().__init__(estimator, scoring, n_jobs, iid, refit, cv, verbose, pre_dispatch, error_score,
@@ -43,6 +46,7 @@ class NatureInspiredSearchCV(BaseSearchCV):
         self.__param_grid = ParamGrid(param_grid)
         self.__algorithm = self.__get_algorithm(algorithm, population_size)
 
+        self.runs_ = runs
         self.optimization_logs_ = None
 
     def __print_run_search_log(self):
