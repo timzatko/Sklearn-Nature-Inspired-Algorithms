@@ -39,6 +39,7 @@ nia_search = NatureInspiredSearchCV(
     max_n_gen=100,
     max_stagnating_gen=10,
     runs=3,
+    random_state=None, # or any number if you want same results on each run
 )
 
 nia_search.fit(X_train, y_train)
@@ -55,7 +56,7 @@ Refer to their [documentation](https://niapy.readthedocs.io/en/latest/) and [exa
 ```python
 from NiaPy.algorithms.basic import GeneticAlgorithm
 
-algorithm = GeneticAlgorithm()
+algorithm = GeneticAlgorithm() # when custom algorithm is provided random_state is ignored
 algorithm.setParameters(NP=50, Ts=5, Mr=0.25)
 
 nia_search = NatureInspiredSearchCV(

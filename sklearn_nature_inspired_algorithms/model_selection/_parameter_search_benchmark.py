@@ -4,11 +4,10 @@ from NiaPy.benchmarks import Benchmark
 class ParameterSearchBenchmark(Benchmark):
     evaluation_count = 0
 
-    cache = {}
-
     def __init__(self, evaluate_candidates, param_grid):
         self.evaluate_candidates = evaluate_candidates
         self.param_grid = param_grid
+        self.cache = {}
 
         Benchmark.__init__(self, 0, 1)
 

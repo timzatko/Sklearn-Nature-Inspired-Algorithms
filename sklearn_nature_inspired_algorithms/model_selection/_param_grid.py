@@ -3,15 +3,13 @@ import numpy as np
 
 
 class ParamGrid:
-    __keys = []
-
-    param_grid = None
-
-    key_to_index_map = {}
-    index_to_key_map = {}
-
     def __init__(self, param_grid):
         self.param_grid = param_grid
+
+        self.key_to_index_map = {}
+        self.index_to_key_map = {}
+
+        self.__keys = []
 
         if param_grid is None:
             raise ValueError('param_grid cannot be None!')
