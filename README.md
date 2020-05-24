@@ -46,13 +46,13 @@ nia_search.fit(X_train, y_train)
 
 # the best params are stored in nia_search.best_params_
 # finally you can train your model with best params from nia search
-clf = RandomForestClassifier(**nia_search.best_params_, random_state=42)
+new_clf = RandomForestClassifier(**nia_search.best_params_, random_state=42)
 ```
 
 Also you plot the search process with _line plot_ or _violin plot_.
 
 ```python
-from sklearn_nature_inspired_algorithms.helpers import score_by_generation_lineplot
+from sklearn_nature_inspired_algorithms.helpers import score_by_generation_lineplot, score_by_generation_violinplot
 
 # line plot will plot all of the runs, you can specify the metric to be plotted ('min', 'max', 'median', 'mean')
 score_by_generation_lineplot(nia_search, metric='max')
