@@ -43,6 +43,22 @@ nia_search = NatureInspiredSearchCV(
 )
 
 nia_search.fit(X_train, y_train)
+
+# the best params are stored in nia_search.best_params_
+# finally you can train your model with best params from nia search
+clf = RandomForestClassifier(**nia_search.best_params_, random_state=42)
+```
+
+Also you plot the search process with _line plot_ or _violin plot_.
+
+```python
+from sklearn_nature_inspired_algorithms.helpers import score_by_generation_lineplot
+
+# line plot will plot all of the runs, you can specify the metric to be plotted ('min', 'max', 'median', 'mean')
+score_by_generation_lineplot(nia_search, metric='max')
+
+# in violin plot you need to specify the run to be plotted
+score_by_generation_violinplot(nia_search, run=0)
 ```
 
 Jupyter notebooks with full examples are available in [here](examples/notebooks).
