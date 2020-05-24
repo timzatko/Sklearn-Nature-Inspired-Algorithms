@@ -53,7 +53,7 @@ If you do not want to use ony of the pre-defined algorithm configurations, you c
 This will allow you to have more control of the algorithm behaviour. 
 Refer to their [documentation](https://niapy.readthedocs.io/en/latest/) and [examples](https://github.com/NiaOrg/NiaPy/tree/master/examples) for the usage. 
 
-__Note:__ use the version > 2.x.x of NiaPy package
+__Note:__ Use version >2.x.x of NiaPy package
 
 ```python
 from NiaPy.algorithms.basic import GeneticAlgorithm
