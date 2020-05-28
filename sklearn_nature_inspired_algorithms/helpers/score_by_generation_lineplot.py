@@ -9,7 +9,7 @@ ALLOWED_METRICS = ['min', 'max', 'median', 'mean']
 
 def score_by_generation_lineplot(nia_search, metric='max', ax=None, ylim=None):
     if metric not in ALLOWED_METRICS:
-        raise ValueError(f'{max} is not in the allowed metrics! ({ALLOWED_METRICS})')
+        raise ValueError(f'{metric} is not in the allowed metrics! ({ALLOWED_METRICS})')
 
     optimization_logs_by_runs = []
 
