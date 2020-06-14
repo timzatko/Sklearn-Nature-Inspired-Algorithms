@@ -53,3 +53,8 @@ You can use them to train the final model.
    new_clf = RandomForestClassifier(**nia_search.best_params_, random_state=42)
 
 If you would like to plot the optimization process you can use one of the built-in functions described in :doc:`Visualisation of Optimization Results </introduction/visualisation>`.
+
+Examples
+--------
+
+Jupyter Notebooks with examples are available `here <https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms/tree/master/examples/notebooks>`_.
