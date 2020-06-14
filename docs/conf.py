@@ -17,7 +17,7 @@
 
 # -- Project information -----------------------------------------------------
 
-project = 'Sklearn Nature Inspired Search'
+project = 'Sklearn Nature Inspired Algorithms'
 copyright = '2020, Timotej Zaťko'
 author = 'Timotej Zaťko'
 

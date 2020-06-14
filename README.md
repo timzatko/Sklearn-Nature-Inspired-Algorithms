@@ -16,7 +16,7 @@ pip install sklearn-nature-inspired-algorithms
 
 ## Usage
 
-The usage is similar to using sklearn's `GridSearchCV`.
+The usage is similar to using sklearn's `GridSearchCV`. Refer to the [documentation](https://sklearn-nature-inspired-algorithms.readthedocs.io/en/stable/) for more detailed guides and more examples.
 
 ```python
 from sklearn_nature_inspired_algorithms.model_selection import NatureInspiredSearchCV
@@ -63,10 +63,10 @@ score_by_generation_violinplot(nia_search, run=0)
 
 Jupyter notebooks with full examples are available in [here](examples/notebooks).
 
-### Using custom nature inspired algorithm
+### Using a Custom Nature-Inspired Algorithm
 
-If you do not want to use ony of the pre-defined algorithm configurations, you can use any algorithm from the  [NiaPy](https://github.com/NiaOrg/NiaPy) collection.
-This will allow you to have more control of the algorithm behaviour. 
+If you do not want to use any of the pre-defined algorithm configurations, you can use any algorithm from the  [NiaPy](https://github.com/NiaOrg/NiaPy) collection.
+This will allow you to have more control of the algorithm behavior. 
 Refer to their [documentation](https://niapy.readthedocs.io/en/latest/) and [examples](https://github.com/NiaOrg/NiaPy/tree/master/examples) for the usage. 
 
 __Note:__ Use version >2.x.x of NiaPy package

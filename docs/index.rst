@@ -1,20 +1,39 @@
-.. Sklearn Nature Inspired Search documentation master file, created by
-   sphinx-quickstart on Sat Jun 13 23:19:18 2020.
-   You can adapt this file completely to your liking, but it should at least
-   contain the root `toctree` directive.
+==================================
+Sklearn Nature Inspired Algorithms
+==================================
 
-Welcome to Sklearn Nature Inspired Search's documentation!
-==========================================================
+Nature inspired algorithms for hyper-parameter tuning of `scikit-learn <https://github.com/scikit-learn/scikit-learn>`_ models. This library uses algorithms implementation from `NiaPy <https://github.com/NiaOrg/NiaPy>`_.
+
+Getting started
+---------------
+
+The following pages will help you to get started with the nature-inspired algorithms library.
+
+:doc:`Basic Usage </introduction/usage>` |
+:doc:`NatureInspiredSearchCV </introduction/nature-inspired-search-cv>` |
+:doc:`Visualisation of Optimization Results </introduction/visualisation>`
+:doc:`List of Supported Algorithms </introduction/algorithms>`
 
 .. toctree::
-   :maxdepth: 2
-   :caption: Contents:
+   :maxdepth: 1
+   :hidden:
+   :caption: Getting started
 
+   /introduction/usage.rst
+   /introduction/nature-inspired-search-cv.rst
+   /introduction/visualisation.rst
+   /introduction/algorithms.rst
 
+Advanced
+---------------
 
-Indices and tables
-==================
+If you are already familiar with this library, these pages cover more advanced topics of its usage (eg. using a custom NiaPy algorithm).
 
-* :ref:`genindex`
-* :ref:`modindex`
-* :ref:`search`
+:doc:`Using a Custom NiaPy Algorithm </advanced/niapy>`
+
+.. toctree::
+   :maxdepth: 1
+   :hidden:
+   :caption: Advanced
+
+   /advanced/niapy.rst
