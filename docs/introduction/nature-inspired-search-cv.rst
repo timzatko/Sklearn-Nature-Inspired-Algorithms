@@ -24,6 +24,7 @@ Parameters
 - **runs**: *int, default=3.* The number of independent optimization runs to be done.
 - **max_stagnating_gen**: *int, default=20.* If the score remains unchaged for the number of generations defined by this parameter, the optimization will be stopped for that particular run.
 - **random_state**: *int, default=None.* Seed for the random.
+- **verbose**: *int, default=0.* The level of the logging, possible values: 0, 1, 2.
 
 
 Attributes
