@@ -35,14 +35,12 @@ Use [semantic versioning](https://semver.org/) for versions.
 
 ### Bump version
 
-1. Bump version with peotry
+1. Bump version with
     ```shell script
-     poetry version v0.1.1
-     git commit -am "Bump version to v0.1.1"
+    sh ./version.sh v0.1.1
     ```
-1. Create and push a tag 
+1. Push the created commit and a tag 
     ```shell script
-    git tag v0.1.1
     git push --tags
     ```
    This will trigger a pipeline which will make a draft release.
