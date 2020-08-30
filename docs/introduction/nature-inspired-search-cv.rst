@@ -19,16 +19,22 @@ Parameters
 - **estimator**: *sklearn estimator object object.*
 - **param_grid**: *dict.* Same as for the `GridSearchCV`.
 - **algorithm**: *str or NiaPy algorithm object, default='hba'.* Algorithm which will be used for optimization, refer to the :doc:`List of Supported Algorithms </introduction/algorithms>` for possible values.
-- **population_size**: *int, default=50.* Number of trained estimators in the population.
-- **max_n_gen**: *int, default=100.* The maximum number of generations which can be optimized.
-- **runs**: *int, default=3.* The number of independent optimization runs to be done.
-- **max_stagnating_gen**: *int, default=20.* If the score remains unchaged for the number of generations defined by this parameter, the optimization will be stopped for that particular run.
-- **random_state**: *int, default=None.* Seed for the random.
+- **population_size**: *int, default=50.* The number of trained estimators in the population. When the population size is smaller the search will run faster, however, the best result might not be found since the search might stuck in the `local optimum <https://en.wikipedia.org/wiki/Local_optimum>` quickly. Bigger values slow down the search which can lead to the search being as slow as the grid search (when the population size is equal/close to the number of parameter combinations).
+- **max_n_gen**: *int, default=100.* The maximum number of generations which can be optimized. This value determines when the search will be stopped. If you set this value too low, the search might not start to converge to the optimal solution. However high values can significantly prolong the search. If you set the `max_stagnating_gen` to a reasonable value, the maximum of `max_n_gen` should never be reached.
+- **runs**: *int, default=3.* The number of independent optimization runs to be done. Low values will speed up the search, high values will slow it down. The optimization results for individuals (a combination of parameters) are being cached between the runs, so every additional run should be faster than the previous one. Hence the training time does not linearly grow with the number of runs (it grows logarithmically).
+- **max_stagnating_gen**: *int, default=20.* If the score remains unchanged for the number of generations defined by this parameter, the optimization will be stopped for that particular run. Lower values will stop the search faster, higher values prolong the search time. If the algorithm is stagnating for example for 20 generations the optimization time of those 20 generations is not that long, since in most of the algorithms the majority of the population will be the neighbors of the best individual and over time those neighbors will be cached. Higher values also help to prevent being stuck in the local optima. If the value is too high, the algorithm might be stopped by `max_n_gen`.
+- **random_state**: *int, default=None.* Seed for the random. Set this to some constant if you want to achieve consistent results.
 - **verbose**: *int, default=0.* The level of the logging, possible values: 0, 1, 2.
 
+
+Glossary
+--------
+
+    - an *individual* is a parameter combination which is trained during the optimization run. The results for every invididual are *cached* between runs.
+    - a *population* is a group of invididuals in one generation/step of the optimization.
 
 Attributes
 ~~~~~~~~~~
 
-- **runs_**: *int.* Number of optimization runs.
+- **runs_**: *int.* Number of optimization runs (from the runs parameter).
 - **optimization_logs_**: *dict.* Logs from optimization runs contains scores (fitness) of every individual of the population in each generation.
