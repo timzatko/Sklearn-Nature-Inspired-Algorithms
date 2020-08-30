@@ -1,6 +1,6 @@
 [tool.poetry]
 name = "sklearn_nature_inspired_algorithms"
-version = "v0.4.5"
+version = "v0.4.6"
 description = "Search using nature inspired algorithms over specified parameter values for an sklearn estimator."
 
 license = "MIT"
@@ -16,10 +16,6 @@ homepage = "https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms"
 
 keywords = ['sklearn', 'scikit-learn', 'nature-inspired-algorithms', 'hyper-parameter-tuning']
 
-[build-system]
-requires = ["poetry"]
-build-backend = "poetry.masonry.api"
-
 [tool.poetry.dependencies]
 python = "^3.6.1"  # Compatible python versions must be declared here
 toml = "^0.9"
@@ -33,3 +29,7 @@ pandas = "^1.0.3"
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.1"
 coverage = "^5.1"
+[build-system]
+requires = ["poetry"]
+build-backend = "poetry.masonry.api"
+
