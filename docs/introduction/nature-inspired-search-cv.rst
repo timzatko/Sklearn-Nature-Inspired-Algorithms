@@ -25,6 +25,7 @@ Parameters
 - **max_stagnating_gen**: *int, default=20.* If the score remains unchanged for the number of generations defined by this parameter, the optimization will be stopped for that particular run. Lower values will stop the search faster, higher values prolong the search time. If the algorithm is stagnating for example for 20 generations the optimization time of those 20 generations is not that long, since in most of the algorithms the majority of the population will be the neighbors of the best individual and over time those neighbors will be cached. Higher values also help to prevent being stuck in the local optima. If the value is too high, the algorithm might be stopped by `max_n_gen`.
 - **random_state**: *int, default=None.* Seed for the random. Set this to some constant if you want to achieve consistent results.
 - **verbose**: *int, default=0.* The level of the logging, possible values: 0, 1, 2.
+- **n_jobs**: *int, default=None.* Number of jobs to run in parallel. None means 1 unless in a joblib.parallel_backend context. -1 means using all processors. This affects the number of jobs when evaluating a model for one _individual_ (for one individual there might be more model evaluations because of cross-validation) not for the whole population - current implementations of nature-inspired algorithms do not support multiprocessing. You will benefit from multiprocessing only if you use cross-validation.
 
 
 Glossary
