@@ -11,7 +11,13 @@ Nature inspired algorithms for hyper-parameter tuning of [scikit-learn](https://
 ## Installation
 
 ```shell script
-pip install sklearn-nature-inspired-algorithms
+$ pip install sklearn-nature-inspired-algorithms
+```
+
+To install this package on Fedora, run:
+
+```sh
+$ dnf install python3-sklearn-nature-inspired-algorithms
 ```
 
 ## Usage
