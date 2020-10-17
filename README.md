@@ -14,6 +14,12 @@ Nature inspired algorithms for hyper-parameter tuning of [scikit-learn](https://
 pip install sklearn-nature-inspired-algorithms
 ```
 
+To install this package on Fedora, use:
+
+```sh
+$ dnf install python3-sklearn-nature-inspired-algorithms
+```
+
 ## Usage
 
 The usage is similar to using sklearn's `GridSearchCV`. Refer to the [documentation](https://sklearn-nature-inspired-algorithms.readthedocs.io/en/stable/) for more detailed guides and more examples.
