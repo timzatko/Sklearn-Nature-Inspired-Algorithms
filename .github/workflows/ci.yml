@@ -38,6 +38,7 @@ jobs:
       run: |
         poetry build
     - uses: actions/upload-artifact@v1
+      if: ${{ matrix['python-version'] == 3.8 }}
       with:
         name: dist
         path: dist
