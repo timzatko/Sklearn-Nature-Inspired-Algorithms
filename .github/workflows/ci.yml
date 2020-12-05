@@ -56,10 +56,10 @@ jobs:
         name: dist
     - name: Prepare Release
       run: |
-        echo "::set-env name=LIB_WHL_PATH::$(find dist -type f -name '*.whl')"
-        echo "::set-env name=LIB_WHL_NAME::$(find dist -type f -name '*.whl' -exec basename {} \;)"
-        echo "::set-env name=LIB_TAR_GZ_PATH::$(find dist -type f -name '*.tar.gz')"
-        echo "::set-env name=LIB_TAR_GZ_NAME::$(find dist -type f -name '*.tar.gz' -exec basename {} \;)"
+        echo "LIB_WHL_PATH=$(find dist -type f -name '*.whl')" >> $GITHUB_ENV
+        echo "LIB_WHL_NAME=$(find dist -type f -name '*.whl' -exec basename {} \;)" >> $GITHUB_ENV
+        echo "LIB_TAR_GZ_PATH=$(find dist -type f -name '*.tar.gz')" >> $GITHUB_ENV
+        echo "LIB_TAR_GZ_NAME=$(find dist -type f -name '*.tar.gz' -exec basename {} \;)" >> $GITHUB_ENV
     - name: Create Release
       id: create_release
       uses: actions/create-release@v1
