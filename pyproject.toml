@@ -22,7 +22,7 @@ toml = "^0.9"
 NiaPy = { version = "2.0.0rc10" }
 scikit-learn = "^0.23"
 numpy = "^1.19"
-matplotlib = "^3.2.1"
+matplotlib = "^3.3"
 seaborn = "^0.10.1"
 pandas = "^1.0.3"
 
