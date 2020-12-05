@@ -24,7 +24,7 @@ scikit-learn = "^0.23"
 numpy = "^1.19"
 matplotlib = "^3.3"
 seaborn = "^0.11"
-pandas = "^1.0.3"
+pandas = "^1.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.1"
