@@ -3,14 +3,15 @@ Class NatureInspiredSearchCV
 
 `sklearn_nature_inspired_algorithms.model_selection.NatureInspiredSearchCV` 
 
-This class is used fot hyper-parameter optimization. Its usage is similiar to the sklearn's `GridSearchCV <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html>`_.
+This class is used for hyper-parameter optimization. Its usage is similiar to the sklearn's `GridSearchCV <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html>`_.
 The optimization algorithm does several runs, in which it optimizes the population of a certain size for a certain amount of generations.
 The same parameter combinations are being cached, so it can be beneficial to make more optimization runs.
 
 .. code-block:: python
     
     class NatureInspiredSearchCV(estimator, param_grid, algorithm='hba', population_size=50, max_n_gen=100, runs=3,
-                 max_stagnating_gen=20, random_state=None)
+                 max_stagnating_gen=20, random_state=None, scoring=None, refit=True, verbose=0,
+                 pre_dispatch='2*n_jobs', error_score=np.nan, return_train_score=True)
 
 
 Parameters
@@ -27,6 +28,9 @@ Parameters
 - **verbose**: *int, default=0.* The level of the logging, possible values: 0, 1, 2.
 - **n_jobs**: *int, default=None.* Number of jobs to run in parallel. None means 1 unless in a joblib.parallel_backend context. -1 means using all processors. This affects the number of jobs when evaluating a model for one _individual_ (for one individual there might be more model evaluations because of cross-validation) not for the whole population - current implementations of nature-inspired algorithms do not support multiprocessing. You will benefit from multiprocessing only if you use cross-validation.
 
+The following parameters: **scoring**, **refit**, **verbose**, **pre_dispatch**, **error_score**, **return_train_score***, are inherited from sklearn's `BaseSearchCV <https://github.com/scikit-learn/scikit-learn/blob/1045d16ec13b1cab7878e7555538573d1884aad3/sklearn/model_selection/_search.py#L410>` and are the same as for the GridSearchCV.
+Refer to the GridSearchCV `documentation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html>` to find out what they do.
+
 
 Glossary
 --------
@@ -39,3 +43,4 @@ Attributes
 
 - **runs_**: *int.* Number of optimization runs (from the runs parameter).
 - **optimization_logs_**: *dict.* Logs from optimization runs contains scores (fitness) of every individual of the population in each generation.
+
