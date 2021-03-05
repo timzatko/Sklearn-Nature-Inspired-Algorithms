@@ -55,7 +55,7 @@ You can use them to train the final model.
 If you would like to plot the optimization process you can use one of the built-in functions described in :doc:`Visualisation of Optimization Results </introduction/visualisation>`.
 
 .. note::
-   The fitness of each invididual in the optimization process is defined by the score method of your estimator or the scoring parameter.
+   The fitness of each invididual in the optimization process is defined by the score method of your estimator or the scoring parameter provided to the :doc:`NatureInspiredSearchCV </introduction/nature-inspired-search-cv>`.
 
 Examples
 --------

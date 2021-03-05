@@ -7,8 +7,8 @@ score_by_generation_lineplot
 ----------------------------
 
 `sklearn_nature_inspired_algorithms.helpers.score_by_generation_lineplot` Plots the score (*min*, *max*, *mean* or *median*) of each algorithm run by generation of the optimization process using the lineplot.
-The score (or "fitness" in the field of nature-inspired algorithms) is set by the provided estimator. Estimators have a score method providing a default evaluation criterion for the problem they are designed to solve (`reference <https://scikit-learn.org/stable/modules/model_evaluation.html#metrics-and-scoring-quantifying-the-quality-of-predictions>`). 
-You can set your own score by providing the scoring paramter to the `NatureInspiredSearchCV </introduction/nature-inspired-search-cv>`.
+The score (or "fitness" in the field of nature-inspired algorithms) is set by the provided estimator. Estimators have a score method providing a default evaluation criterion for the problem they are designed to solve (`reference <https://scikit-learn.org/stable/modules/model_evaluation.html#metrics-and-scoring-quantifying-the-quality-of-predictions>`_). 
+You can set your own score by providing the scoring paramter to the :doc:`NatureInspiredSearchCV </introduction/nature-inspired-search-cv>`.
 
 .. code-block:: python
     
