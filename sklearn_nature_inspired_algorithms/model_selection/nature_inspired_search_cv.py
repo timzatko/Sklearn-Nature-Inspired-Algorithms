@@ -59,11 +59,11 @@ class NatureInspiredSearchCV(BaseSearchCV):
             print(f'Optimization finished, {candidates} candidates were fitted (totalling {fits} fits)')
 
     def __init__(self, estimator, param_grid, algorithm='hba', population_size=50, max_n_gen=100, runs=3,
-                 max_stagnating_gen=20, scoring=None, n_jobs=None, iid='deprecated', refit=True, cv=None, verbose=0,
+                 max_stagnating_gen=20, scoring=None, n_jobs=None, refit=True, cv=None, verbose=0,
                  random_state=None,
                  pre_dispatch='2*n_jobs', error_score=np.nan, return_train_score=True):
-        super().__init__(estimator, scoring, n_jobs, iid, refit, cv, 0, pre_dispatch, error_score,
-                         return_train_score)
+        super().__init__(estimator, scoring=scoring, n_jobs=n_jobs, refit=refit, cv=cv, pre_dispatch=pre_dispatch, error_score=error_score,
+                         return_train_score=return_train_score)
 
         self.__n_gen = max_n_gen
         self.__max_stagnating_gen = max_stagnating_gen
