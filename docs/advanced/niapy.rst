@@ -7,7 +7,7 @@ Refer to their `documentation <https://niapy.readthedocs.io/en/latest/>`_ and `e
 
 .. code-block:: bash
 
-    pip install NiaPy==2.0.0rc10
+    pip install niapy==2.0.0rc17
 
 
 Example
@@ -31,7 +31,7 @@ The usage is almost the same, instead of using the pre-defined algorithm, you pa
     clf = RandomForestClassifier(random_state=42)
 
     algorithm = GeneticAlgorithm() # when custom algorithm is provided random_state is ignored
-    algorithm.setParameters(NP=50, Ts=5, Mr=0.25)
+    algorithm.set_parameters(NP=50, Ts=5, Mr=0.25)
 
     nia_search = NatureInspiredSearchCV(
         clf,

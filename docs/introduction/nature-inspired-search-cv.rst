@@ -41,5 +41,4 @@ Glossary
 Attributes
 ~~~~~~~~~~
 
-- **runs_**: *int.* Number of optimization runs (from the runs parameter).
 - **optimization_logs_**: *dict.* Logs from optimization runs contains scores (fitness) of every individual of the population in each generation.

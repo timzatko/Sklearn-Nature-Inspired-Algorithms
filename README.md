@@ -78,10 +78,10 @@ Refer to their [documentation](https://niapy.readthedocs.io/en/latest/) and [exa
 __Note:__ Use version >2.x.x of NiaPy package
 
 ```python
-from NiaPy.algorithms.basic import GeneticAlgorithm
+from niapy.algorithms.basic import GeneticAlgorithm
 
 algorithm = GeneticAlgorithm() # when custom algorithm is provided random_state is ignored
-algorithm.setParameters(NP=50, Ts=5, Mr=0.25)
+algorithm.set_parameters(NP=50, Ts=5, Mr=0.25)
 
 nia_search = NatureInspiredSearchCV(
     clf,
