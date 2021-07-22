@@ -1,14 +1,12 @@
-from NiaPy.task import StoppingTask, OptimizationType
+from niapy.task import Task, OptimizationType
 
 
-class StagnationStoppingTask(StoppingTask):
+class StagnationStoppingTask(Task):
     prev_x_f = None
 
     def __init__(self, max_stagnating_gen=None, iteration_finished_callback=None, **kwargs):
         super().__init__(**kwargs,
-                         D=kwargs.get('length'),
-                         nGEN=kwargs.get('n_gen'),
-                         optType=OptimizationType.MINIMIZATION)
+                         optimization_type=OptimizationType.MINIMIZATION)
 
         if not isinstance(max_stagnating_gen, int):
             if max_stagnating_gen is not None:
@@ -40,20 +38,20 @@ class StagnationStoppingTask(StoppingTask):
 
     def eval(self, A):
         x_f = super().eval(A)
-        self.optimization_logs_.append((self.Iters, x_f))
+        self.optimization_logs_.append((self.iters, x_f))
         return x_f
 
-    def stopCond(self):
+    def stopping_condition(self):
         if self.is_stagnating:
             return True
 
-        return super().stopCond()
+        return super().stopping_condition()
 
-    def nextIter(self):
-        super().nextIter()
+    def next_iter(self):
+        super().next_iter()
 
         if self.max_stagnating_gen:
             self.eval_stagnation()
 
             if self.iteration_finished_callback:
-                self.iteration_finished_callback(self.Iters, self.stagnating_gen_count)
+                self.iteration_finished_callback(self.iters, self.stagnating_gen_count)
