@@ -101,7 +101,7 @@ python-versions = "*"
 
 [[package]]
 name = "niapy"
-version = "2.0.0rc18"
+version = "2.0.0"
 description = "Python micro framework for building nature-inspired algorithms."
 category = "main"
 optional = false
@@ -291,7 +291,7 @@ testing = ["pytest (>=4.6)", "pytest-checkdocs (>=2.4)", "pytest-flake8", "pytes
 [metadata]
 lock-version = "1.1"
 python-versions = ">= 3.7.0, < 4.0.0"
-content-hash = "2e011f54be0f212c3fa6c79bfc7c194ef04404badfe6003fe784557aba280860"
+content-hash = "f3798309181fa6617c941a27f77e4851dfa2516789e18605b0e9230342bb17e0"
 
 [metadata.files]
 coverage = [
@@ -442,8 +442,8 @@ mccabe = [
     {file = "mccabe-0.6.1.tar.gz", hash = "sha256:dd8d182285a0fe56bace7f45b5e7d1a6ebcbf524e8f3bd87eb0f125271b8831f"},
 ]
 niapy = [
-    {file = "niapy-2.0.0rc18-py3-none-any.whl", hash = "sha256:47388365635ef8123fcf00f2b2243dbac2f77a0b2add2566538e3509db27087d"},
-    {file = "niapy-2.0.0rc18.tar.gz", hash = "sha256:1412570dead852068d52f2929a2945e52dc544dfb7edb1923da735f5a15fd323"},
+    {file = "niapy-2.0.0-py3-none-any.whl", hash = "sha256:01c34513529d9d4fb4ab7f16a9c9e30799e1706cc1349d37b351c588e0ac4208"},
+    {file = "niapy-2.0.0.tar.gz", hash = "sha256:2caddd96e5b8c8029e21e99f6888ade7170587ecd62cf99509da9c209f0ab9eb"},
 ]
 numpy = [
     {file = "numpy-1.21.1-cp37-cp37m-macosx_10_9_x86_64.whl", hash = "sha256:38e8648f9449a549a7dfe8d8755a5979b45b3538520d1e735637ef28e8c2dc50"},
