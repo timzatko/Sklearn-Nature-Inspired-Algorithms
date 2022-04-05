@@ -18,14 +18,14 @@ keywords = ['sklearn', 'scikit-learn', 'nature-inspired-algorithms', 'hyper-para
 
 # https://python-poetry.org/docs/versions/
 [tool.poetry.dependencies]
-python = ">= 3.7.0, < 4.0.0"
-toml = ">= 0.9, < 1.0.0"
-scikit-learn = ">= 0.22, < 1.0.0"
-numpy = ">= 1.18, < 2.0.0"
-matplotlib = ">= 3.2, < 4.0.0"
-seaborn = ">= 0.10, < 1.0.0"
-pandas = ">= 1.0, < 2.0.0"
-niapy = "2.0.0"
+python = ">= 3.8.0, < 4.0.0"
+toml = ">= 0.10, < 1.0.0"
+scikit-learn = ">= 1.0.2"
+numpy = ">= 1.22, < 2.0.0"
+matplotlib = ">= 3.5, < 4.0.0"
+seaborn = ">= 0.11, < 1.0.0"
+pandas = ">= 1.4, < 2.0.0"
+niapy = "2.0.1"
 
 [tool.poetry.dev-dependencies]
 flake8 = "^3.8.1"
