@@ -28,8 +28,8 @@ pandas = ">= 1.4, < 2.0.0"
 niapy = "2.0.1"
 
 [tool.poetry.dev-dependencies]
-flake8 = "^3.8.1"
-coverage = "^5.1"
+flake8 = "^4.0.1"
+coverage = "^6.3"
 [build-system]
 requires = ["poetry"]
 build-backend = "poetry.masonry.api"
