@@ -7,14 +7,18 @@ from ._stagnation_stopping_task import StagnationStoppingTask
 from niapy.algorithms.basic import FireflyAlgorithm, BatAlgorithm, GreyWolfOptimizer
 from niapy.algorithms.modified import HybridBatAlgorithm, HybridSelfAdaptiveBatAlgorithm
 
-from sklearn.model_selection._search import BaseSearchCV
+from sklearn.model_selection._search import BaseSearchCV, check_cv, is_classifier
 
 SUPPORTED_ALGORITHMS = ['fa', 'gwo', 'ba', 'hba', 'hsaba']
 
 
 class NatureInspiredSearchCV(BaseSearchCV):
-    def _run_search(self, evaluate_candidates):
+    def fit(self, X, y=None, *, groups=None, **fit_params):
+        self.cv_orig = check_cv(self.cv, y, classifier=is_classifier(self.estimator))
+        self.n_splits = self.cv_orig.get_n_splits(X, y, groups)
+        return super().fit(X, y, groups=groups, **fit_params)
 
+    def _run_search(self, evaluate_candidates):
         self.__param_grid = ParamGrid(self.param_grid)
         self.__algorithm = self.__get_algorithm(self.algorithm, self.population_size, self.random_state)
         self.__print_run_search_log()
@@ -56,8 +60,8 @@ class NatureInspiredSearchCV(BaseSearchCV):
         if self.cv is None:
             print(f'Optimization finished, {candidates} candidates were fitted')
         else:
-            fits = candidates * self.cv
-            print(f'Optimization finished, {candidates} candidates were fitted (totalling {fits} fits)')
+            print(f'Optimization finished, {candidates} candidates were fitted '
+                  f'(totalling {candidates * self.n_splits} fits)')
 
     def __init__(self, estimator, param_grid, algorithm='hba', population_size=50, max_n_gen=100, runs=3,
                  max_stagnating_gen=20, scoring=None, n_jobs=None, refit=True, cv=None, verbose=0,
@@ -75,15 +79,16 @@ class NatureInspiredSearchCV(BaseSearchCV):
         self.random_state = random_state
         self.runs = runs
         self.verbose = verbose
-
         self.optimization_logs_ = None
+        self.cv_orig = None
+        self.n_splits = None
 
     def __print_run_search_log(self):
         candidates = self.__param_grid.get_number_of_candidates()
 
         if self.cv is not None:
             print(f'Fitting {self.cv} folds for some of the {candidates} candidates, '
-                  f'which might total in {candidates * self.cv} fits')
+                  f'which might total in {candidates * self.n_splits} fits')
         else:
             print(f'Fitting at most {candidates} candidates')
 

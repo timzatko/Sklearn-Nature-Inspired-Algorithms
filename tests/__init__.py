@@ -1,6 +1,8 @@
 import unittest
 
-from .model_selection import NatureInspiredSearchTestCase, ParamGridTestCase
+from .model_selection import NatureInspiredSearchTestCase, \
+    ParamGridTestCase, \
+    CrossValidationTestCase
 
 
 def get_suite():
@@ -8,6 +10,7 @@ def get_suite():
 
     suite.addTest(NatureInspiredSearchTestCase())
     suite.addTest(ParamGridTestCase())
+    suite.addTest(CrossValidationTestCase())
 
     return suite
 
