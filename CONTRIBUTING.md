@@ -39,10 +39,9 @@ Use [semantic versioning](https://semver.org/) for versions.
     ```shell script
     sh ./version.sh v0.1.1
     ```
-1. Push the created commit and a tag 
+2. Push the created commit and a tag 
     ```shell script
     git push --tags
     ```
    This will trigger a pipeline which will make a draft release.
-1. Publish the draft release, don't forget to edit release notes. Publishing the release will trigger the release pipeline which will publish the package to the [pypi](pypi.org) registry. 
-   
+3. Publish the draft release, don't forget to edit release notes. Publishing the release will trigger the release pipeline which will publish the package to the [pypi](https://pypi.org) registry.
