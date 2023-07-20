@@ -49,7 +49,7 @@ class CrossValidationTestCase(TestCase):
 
         # set_params should be called each time new instance of estimator is created - for each individual in population
         method_calls = self.estimator.Mock.set_params.call_count
-        self.assertEquals(25 * 3 + 1, method_calls)
+        self.assertEqual(25 * 3 + 1, method_calls)
 
     def test_cv_is_object(self):
         nia_search = self._get_nia_search(self.estimator, cv=GroupKFold(n_splits=3))
@@ -60,7 +60,7 @@ class CrossValidationTestCase(TestCase):
 
         # set_params should be called each time new instance of estimator is created - for each individual in population
         method_calls = self.estimator.Mock.set_params.call_count
-        self.assertEquals(152, method_calls)
+        self.assertEqual(152, method_calls)
 
     @staticmethod
     def _get_nia_search(clf, cv):
