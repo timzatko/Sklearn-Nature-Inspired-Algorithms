@@ -18,7 +18,7 @@ keywords = ['sklearn', 'scikit-learn', 'nature-inspired-algorithms', 'hyper-para
 
 # https://python-poetry.org/docs/versions/
 [tool.poetry.dependencies]
-python = ">= 3.8.1, <= 3.11"
+python = ">= 3.8.1, <= 3.12"
 toml = ">= 0.10, < 1.0.0"
 scikit-learn = ">= 1.0.2"
 numpy = ">= 1.22, < 2.0.0"
