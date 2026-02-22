@@ -5,7 +5,7 @@ version=$1
 # check semver regex
 if [[ $(python ./scripts/is_semver.py $version) == "true" ]]; then
   echo "$version"
-  poetry version "$version"
+  sed -i "s/^version = .*/version = \"${version#v}\"/" pyproject.toml
   git commit -am "Bump version to $version"
   git tag "$version"
 else
