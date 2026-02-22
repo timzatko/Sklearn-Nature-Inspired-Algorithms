@@ -4,7 +4,7 @@ build-backend = "setuptools.build_meta"
 
 [project]
 name = "sklearn-nature-inspired-algorithms"
-version = "0.12.0"
+version = "0.13.0"
 description = "Search using nature inspired algorithms over specified parameter values for an sklearn estimator."
 license = "MIT"
 readme = "README.md"
