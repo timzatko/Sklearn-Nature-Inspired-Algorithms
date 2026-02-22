@@ -9,13 +9,14 @@ jobs:
   publish:
     runs-on: ubuntu-latest
     steps:
-      - uses: actions/checkout@v2
-      - uses: actions/setup-python@v2
+      - uses: actions/checkout@v4
+      - uses: actions/setup-python@v5
         with:
-          python-version: 3.8
-      - name: Prepare environment
+          python-version: "3.12"
+      - name: Install dependencies
         run: |
-          chmod +x ./ci/prepare_env.sh && ./ci/prepare_env.sh
+          python -m pip install --upgrade pip
+          pip install twine
       - name: Download release assets
         run: |
           mkdir -p dist
@@ -26,4 +27,4 @@ jobs:
           PYPI_PASSWORD: ${{ secrets.PYPI_PASSWORD }}
           PYPI_USERNAME: ${{ secrets.PYPI_USERNAME }}
         run: |
-          poetry publish -u "$PYPI_USERNAME" -p "$PYPI_PASSWORD"
+          twine upload -u "$PYPI_USERNAME" -p "$PYPI_PASSWORD" dist/*

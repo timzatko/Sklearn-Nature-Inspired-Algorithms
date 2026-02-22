@@ -1,36 +1,39 @@
-[tool.poetry]
-name = "sklearn_nature_inspired_algorithms"
-version = "v0.12.0"
+[build-system]
+requires = ["setuptools >= 64"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "sklearn-nature-inspired-algorithms"
+version = "0.12.0"
 description = "Search using nature inspired algorithms over specified parameter values for an sklearn estimator."
-
 license = "MIT"
-
+readme = "README.md"
+requires-python = ">= 3.9"
 authors = [
-    "Timotej Zatko <timi.zatko@gmail.com>"
+    { name = "Timotej Zatko", email = "timi.zatko@gmail.com" },
+]
+keywords = ["sklearn", "scikit-learn", "nature-inspired-algorithms", "hyper-parameter-tuning"]
+
+dependencies = [
+    "scikit-learn >= 1.0.2",
+    "numpy >= 1.22",
+    "matplotlib >= 3.5",
+    "seaborn >= 0.11",
+    "pandas >= 1.4",
+    "niapy >= 2.0",
+    "scipy >= 1.7.3",
 ]
 
-readme = 'README.md'  # Markdown files are supported
+[project.optional-dependencies]
+dev = [
+    "flake8 >= 6.0",
+    "coverage >= 7.0",
+    "build",
+]
 
-repository = "https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms"
-homepage = "https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms"
+[project.urls]
+Homepage = "https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms"
+Repository = "https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms"
 
-keywords = ['sklearn', 'scikit-learn', 'nature-inspired-algorithms', 'hyper-parameter-tuning']
-
-# https://python-poetry.org/docs/versions/
-[tool.poetry.dependencies]
-python = ">= 3.8.1, <= 3.12"
-scikit-learn = ">= 1.0.2"
-numpy = ">= 1.22, < 2.0.0"
-matplotlib = ">= 3.5, < 4.0.0"
-seaborn = ">= 0.11, < 1.0.0"
-pandas = ">= 1.4, < 2.0.0"
-niapy = ">= 2.0"
-scipy = ">= 1.7.3"
-
-[tool.poetry.dev-dependencies]
-flake8 = ">= 6.0"
-coverage = ">= 7.0"
-[build-system]
-requires = ["poetry"]
-build-backend = "poetry.masonry.api"
-
+[tool.setuptools.packages.find]
+include = ["sklearn_nature_inspired_algorithms*"]
