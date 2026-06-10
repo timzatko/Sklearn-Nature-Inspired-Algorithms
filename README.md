@@ -1,7 +1,7 @@
 # Nature-Inspired Algorithms for scikit-learn
 
-[![CI](https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms/workflows/CI/badge.svg?branch=master)](https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms/actions?query=workflow:CI+branch:master)
-![PyPI - Python Version](https://img.shields.io/pypi/pyversions/sklearn-nature-inspired-algorithms)
+[![CI](https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms/actions/workflows/ci.yml/badge.svg?branch=master)](https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms/actions/workflows/ci.yml?query=branch%3Amaster)
+![Python Version](https://img.shields.io/python/required-version-toml?tomlFilePath=https%3A%2F%2Fraw.githubusercontent.com%2Ftimzatko%2FSklearn-Nature-Inspired-Algorithms%2Fmaster%2Fpyproject.toml)
 [![PyPI version](https://badge.fury.io/py/sklearn-nature-inspired-algorithms.svg)](https://pypi.org/project/sklearn-nature-inspired-algorithms/)
 [![PyPI downloads](https://img.shields.io/pypi/dm/sklearn-nature-inspired-algorithms)](https://pypi.org/project/sklearn-nature-inspired-algorithms/)
 [![Fedora package](https://img.shields.io/fedora/v/python3-sklearn-nature-inspired-algorithms?color=blue&label=Fedora%20Linux&logo=fedora)](https://src.fedoraproject.org/rpms/python-sklearn-nature-inspired-algorithms)
