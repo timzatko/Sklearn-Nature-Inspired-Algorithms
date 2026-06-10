@@ -13,6 +13,14 @@ class ParamGridTestCase(unittest.TestCase):
 
         self.param_grid = ParamGrid(param_grid_value)
 
+    def test_param_grid_cannot_be_none(self):
+        with self.assertRaisesRegex(ValueError, 'param_grid cannot be None'):
+            ParamGrid(None)
+
+    def test_keys_and_values(self):
+        self.assertEqual(self.param_grid.keys(), ('param_a', 'param_b', 'param_c'))
+        self.assertEqual(list(self.param_grid.values()), [[100], range(1, 11), [0.1, 0.2, 0.3, 0.4]])
+
     def test_param_grid_index_and_key_mappings(self):
         self.assertEqual(self.param_grid.index_to_key_map, {
             0: 'param_a',
