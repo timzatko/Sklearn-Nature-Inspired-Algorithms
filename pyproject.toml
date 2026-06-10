@@ -20,7 +20,7 @@ dependencies = [
     "matplotlib >= 3.9",
     "seaborn >= 0.13",
     "pandas >= 2.2.2",
-    "niapy >= 2.5.1",
+    "niapy >= 2.7.0",
     "scipy >= 1.13",
 ]
 

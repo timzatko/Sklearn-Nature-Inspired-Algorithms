@@ -3,11 +3,11 @@ Using a Custom NiaPy Algorithm
 
 If you do not want to use any of the pre-defined algorithm configurations, you can use any algorithm from the `NiaPy <https://github.com/NiaOrg/NiaPy>`_ collection.
 This will allow you to have more control of the algorithm behavior. 
-Refer to their `documentation <https://niapy.readthedocs.io/en/latest/>`_ and `examples <https://github.com/NiaOrg/NiaPy/tree/master/examples>`_ for the usage. **Note:** Use version >2.x.x of NiaPy package.
+Refer to their `documentation <https://niapy.readthedocs.io/en/latest/>`_ and `examples <https://github.com/NiaOrg/NiaPy/tree/master/examples>`_ for the usage. **Note:** Use version >=2.7.0 of NiaPy package.
 
 .. code-block:: bash
 
-    pip install niapy==2.0.0rc17
+    pip install 'niapy>=2.7.0'
 
 
 Example
@@ -19,7 +19,7 @@ The usage is almost the same, instead of using the pre-defined algorithm, you pa
 
     from sklearn_nature_inspired_algorithms.model_selection import NatureInspiredSearchCV
     from sklearn.ensemble import RandomForestClassifier
-    from NiaPy.algorithms.basic import GeneticAlgorithm
+    from niapy.algorithms.basic import GeneticAlgorithm
 
     param_grid = { 
         'n_estimators': range(20, 100, 20), 
