@@ -6,7 +6,7 @@
 [![PyPI downloads](https://img.shields.io/pypi/dm/sklearn-nature-inspired-algorithms)](https://pypi.org/project/sklearn-nature-inspired-algorithms/)
 [![Fedora package](https://img.shields.io/fedora/v/python3-sklearn-nature-inspired-algorithms?color=blue&label=Fedora%20Linux&logo=fedora)](https://src.fedoraproject.org/rpms/python-sklearn-nature-inspired-algorithms)
 
-Nature-inspired algorithms for hyper-parameter tuning of [scikit-learn](https://github.com/scikit-learn/scikit-learn) models. This package uses algorithms implementation from [NiaPy](https://github.com/NiaOrg/NiaPy). 
+Nature-inspired algorithms for hyper-parameter tuning of [scikit-learn](https://github.com/scikit-learn/scikit-learn) models. This package uses algorithm implementations from [NiaPy](https://github.com/NiaOrg/NiaPy).
 
 ## Installation
 
@@ -22,7 +22,7 @@ $ dnf install python3-sklearn-nature-inspired-algorithms
 
 ## Usage
 
-The usage is similar to using sklearn's `GridSearchCV`. Refer to the [documentation](https://sklearn-nature-inspired-algorithms.readthedocs.io/en/stable/) for more detailed guides and more examples.
+Usage is similar to scikit-learn's `GridSearchCV`. Refer to the [documentation](https://sklearn-nature-inspired-algorithms.readthedocs.io/en/stable/) for detailed guides and examples.
 
 ```python
 from sklearn_nature_inspired_algorithms.model_selection import NatureInspiredSearchCV
@@ -45,42 +45,42 @@ nia_search = NatureInspiredSearchCV(
     max_n_gen=100,
     max_stagnating_gen=10,
     runs=3,
-    random_state=None, # or any number if you want same results on each run
+    random_state=None, # or any number for reproducible results
 )
 
 nia_search.fit(X_train, y_train)
 
-# the best params are stored in nia_search.best_params_
-# finally you can train your model with best params from nia search
+# The best parameters are stored in nia_search.best_params_.
+# You can use them to train the final model.
 new_clf = RandomForestClassifier(**nia_search.best_params_, random_state=42)
 ```
 
-Also you plot the search process with _line plot_ or _violin plot_.
+You can also plot the search process with a _line plot_ or a _violin plot_.
 
 ```python
 from sklearn_nature_inspired_algorithms.helpers import score_by_generation_lineplot, score_by_generation_violinplot
 
-# line plot will plot all of the runs, you can specify the metric to be plotted ('min', 'max', 'median', 'mean')
+# The line plot shows all runs. You can choose the metric to plot: 'min', 'max', 'median', or 'mean'.
 score_by_generation_lineplot(nia_search, metric='max')
 
-# in violin plot you need to specify the run to be plotted
+# For the violin plot, specify the run to plot.
 score_by_generation_violinplot(nia_search, run=0)
 ```
 
-Jupyter notebooks with full examples are available in [here](examples/notebooks).
+Jupyter notebooks with full examples are available in [examples/notebooks](examples/notebooks).
 
 ### Using a Custom Nature-Inspired Algorithm
 
-If you do not want to use any of the pre-defined algorithm configurations, you can use any algorithm from the  [NiaPy](https://github.com/NiaOrg/NiaPy) collection.
-This will allow you to have more control of the algorithm behavior. 
-Refer to their [documentation](https://niapy.readthedocs.io/en/latest/) and [examples](https://github.com/NiaOrg/NiaPy/tree/master/examples) for the usage. 
+If you do not want to use one of the predefined algorithm configurations, you can use any algorithm from the [NiaPy](https://github.com/NiaOrg/NiaPy) collection.
+This gives you more control over the algorithm behavior.
+Refer to the NiaPy [documentation](https://niapy.readthedocs.io/en/latest/) and [examples](https://github.com/NiaOrg/NiaPy/tree/master/examples) for usage details.
 
-__Note:__ Use version >2.x.x of NiaPy package
+__Note:__ Use NiaPy version 2.5.1 or later.
 
 ```python
 from niapy.algorithms.basic import GeneticAlgorithm
 
-algorithm = GeneticAlgorithm() # when custom algorithm is provided random_state is ignored
+algorithm = GeneticAlgorithm() # When a custom algorithm is provided, random_state is ignored.
 algorithm.set_parameters(NP=50, Ts=5, Mr=0.25)
 
 nia_search = NatureInspiredSearchCV(
@@ -98,4 +98,4 @@ nia_search.fit(X_train, y_train)
 
 ## Contributing 
 
-Detailed information on the contribution guidelines are in the [CONTRIBUTING.md](./CONTRIBUTING.md).
+Detailed contribution guidelines are available in [CONTRIBUTING.md](./CONTRIBUTING.md).

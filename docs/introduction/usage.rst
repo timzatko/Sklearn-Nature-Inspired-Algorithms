@@ -6,7 +6,7 @@ This page covers the basics of using the library.
 Installation
 ------------
 
-Install the library with **pip** package manager.
+Install the library with the **pip** package manager.
 
 .. code-block:: bash
 
@@ -16,8 +16,8 @@ Install the library with **pip** package manager.
 Usage
 -----
 
-The usage is similar to using sklearn's `GridSearchCV <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html>`_.
-In the following example, we assume that you are already familiar with the basics of the scikit-learn library. Also you need to have it installed.
+Usage is similar to scikit-learn's `GridSearchCV <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html>`_.
+The following example assumes that you are already familiar with the basics of scikit-learn and have it installed.
 
 .. code-block:: python
 
@@ -41,23 +41,24 @@ In the following example, we assume that you are already familiar with the basic
       max_n_gen=100,
       max_stagnating_gen=10,
       runs=3,
-      random_state=None, # or any number if you want same results on each run
+      random_state=None, # or any number for reproducible results
    )
 
    nia_search.fit(X_train, y_train)
 
-After you have fit the `NatureInspiredSearchCV`, you can retrieve the best parameters in the same way as with `GridSearchCV` using the `best_params_` property. 
+After fitting `NatureInspiredSearchCV`, you can retrieve the best parameters the same way you would with `GridSearchCV`, using the `best_params_` property.
 You can use them to train the final model.
 
 .. code-block:: python
+
    new_clf = RandomForestClassifier(**nia_search.best_params_, random_state=42)
 
-If you would like to plot the optimization process you can use one of the built-in functions described in :doc:`Visualisation of Optimization Results </introduction/visualisation>`.
+If you would like to plot the optimization process, you can use one of the built-in functions described in :doc:`Visualization of Optimization Results </introduction/visualisation>`.
 
 .. note::
-   The fitness of each invididual in the optimization process is defined by the score method of your estimator or the scoring parameter provided to the :doc:`NatureInspiredSearchCV </introduction/nature-inspired-search-cv>`.
+   The fitness of each individual in the optimization process is defined by your estimator's score method or by the scoring parameter provided to :doc:`NatureInspiredSearchCV </introduction/nature-inspired-search-cv>`.
 
 Examples
 --------
 
-Jupyter Notebooks with examples are available `here <https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms/tree/master/examples/notebooks>`_.
+Jupyter notebooks with examples are available in the `examples/notebooks directory <https://github.com/timzatko/Sklearn-Nature-Inspired-Algorithms/tree/master/examples/notebooks>`_.

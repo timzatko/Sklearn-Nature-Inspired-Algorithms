@@ -1,6 +1,7 @@
 Using a Custom NiaPy Algorithm
 ==============================
 
+<<<<<<< HEAD
 If you do not want to use any of the pre-defined algorithm configurations, you can use any algorithm from the `NiaPy <https://github.com/NiaOrg/NiaPy>`_ collection.
 This will allow you to have more control of the algorithm behavior. 
 Refer to their `documentation <https://niapy.readthedocs.io/en/latest/>`_ and `examples <https://github.com/NiaOrg/NiaPy/tree/master/examples>`_ for the usage. **Note:** Use version >=2.7.0 of NiaPy package.
@@ -8,12 +9,24 @@ Refer to their `documentation <https://niapy.readthedocs.io/en/latest/>`_ and `e
 .. code-block:: bash
 
     pip install 'niapy>=2.7.0'
+=======
+If you do not want to use one of the predefined algorithm configurations, you can use any algorithm from the `NiaPy <https://github.com/NiaOrg/NiaPy>`_ collection.
+This gives you more control over the algorithm behavior.
+Refer to the NiaPy `documentation <https://niapy.readthedocs.io/en/latest/>`_ and `examples <https://github.com/NiaOrg/NiaPy/tree/master/examples>`_ for usage details.
+
+.. note::
+    Use NiaPy version 2.7.0 or later.
+
+.. code-block:: bash
+
+    pip install 'niapy>=2.7.0'
+>>>>>>> 26db593 (Polish documentation wording)
 
 
 Example
 -------
 
-The usage is almost the same, instead of using the pre-defined algorithm, you pass the NiaPy algorithm object via algorithm parameter.
+Usage is almost the same as with a predefined algorithm. Instead of passing a shorthand value, pass the NiaPy algorithm object via the ``algorithm`` parameter.
 
 .. code-block:: python
 
@@ -30,7 +43,7 @@ The usage is almost the same, instead of using the pre-defined algorithm, you pa
 
     clf = RandomForestClassifier(random_state=42)
 
-    algorithm = GeneticAlgorithm() # when custom algorithm is provided random_state is ignored
+    algorithm = GeneticAlgorithm() # When a custom algorithm is provided, random_state is ignored.
     algorithm.set_parameters(NP=50, Ts=5, Mr=0.25)
 
     nia_search = NatureInspiredSearchCV(
@@ -45,5 +58,5 @@ The usage is almost the same, instead of using the pre-defined algorithm, you pa
 
     nia_search.fit(X_train, y_train)
 
-    # The most optimal parameters are stored in:
+    # The best parameters are stored in:
     # nia_search.best_params_
