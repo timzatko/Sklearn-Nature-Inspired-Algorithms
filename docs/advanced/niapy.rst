@@ -1,15 +1,6 @@
 Using a Custom NiaPy Algorithm
 ==============================
 
-<<<<<<< HEAD
-If you do not want to use any of the pre-defined algorithm configurations, you can use any algorithm from the `NiaPy <https://github.com/NiaOrg/NiaPy>`_ collection.
-This will allow you to have more control of the algorithm behavior. 
-Refer to their `documentation <https://niapy.readthedocs.io/en/latest/>`_ and `examples <https://github.com/NiaOrg/NiaPy/tree/master/examples>`_ for the usage. **Note:** Use version >=2.7.0 of NiaPy package.
-
-.. code-block:: bash
-
-    pip install 'niapy>=2.7.0'
-=======
 If you do not want to use one of the predefined algorithm configurations, you can use any algorithm from the `NiaPy <https://github.com/NiaOrg/NiaPy>`_ collection.
 This gives you more control over the algorithm behavior.
 Refer to the NiaPy `documentation <https://niapy.readthedocs.io/en/latest/>`_ and `examples <https://github.com/NiaOrg/NiaPy/tree/master/examples>`_ for usage details.
@@ -20,8 +11,6 @@ Refer to the NiaPy `documentation <https://niapy.readthedocs.io/en/latest/>`_ an
 .. code-block:: bash
 
     pip install 'niapy>=2.7.0'
->>>>>>> 26db593 (Polish documentation wording)
-
 
 Example
 -------
