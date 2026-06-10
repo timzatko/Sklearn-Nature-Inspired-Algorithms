@@ -39,6 +39,8 @@ class MockClassifierProxy(BaseEstimator):
 
 class CrossValidationTestCase(TestCase):
     def setUp(self):
+        # the mock is static, so it has to be reset to not leak call counts between tests
+        MockClassifierProxy.Mock.reset_mock()
         self.estimator = MockClassifierProxy()
 
     def test_cv_is_int(self):
@@ -60,7 +62,7 @@ class CrossValidationTestCase(TestCase):
 
         # set_params should be called each time new instance of estimator is created - for each individual in population
         method_calls = self.estimator.Mock.set_params.call_count
-        self.assertEqual(152, method_calls)
+        self.assertEqual(25 * 3 + 1, method_calls)
 
     @staticmethod
     def _get_nia_search(clf, cv):
