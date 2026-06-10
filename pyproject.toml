@@ -8,7 +8,7 @@ version = "0.13.0"
 description = "Search using nature inspired algorithms over specified parameter values for an sklearn estimator."
 license = "MIT"
 readme = "README.md"
-requires-python = ">= 3.10"
+requires-python = ">= 3.11"
 authors = [
     { name = "Timotej Zatko", email = "timi.zatko@gmail.com" },
 ]
