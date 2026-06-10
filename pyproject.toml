@@ -8,20 +8,20 @@ version = "0.13.0"
 description = "Search using nature inspired algorithms over specified parameter values for an sklearn estimator."
 license = "MIT"
 readme = "README.md"
-requires-python = ">= 3.9"
+requires-python = ">= 3.10"
 authors = [
     { name = "Timotej Zatko", email = "timi.zatko@gmail.com" },
 ]
 keywords = ["sklearn", "scikit-learn", "nature-inspired-algorithms", "hyper-parameter-tuning"]
 
 dependencies = [
-    "scikit-learn >= 1.0.2",
-    "numpy >= 1.22",
-    "matplotlib >= 3.5",
-    "seaborn >= 0.11",
-    "pandas >= 1.4",
-    "niapy >= 2.0",
-    "scipy >= 1.7.3",
+    "scikit-learn >= 1.4.2",
+    "numpy >= 1.26",
+    "matplotlib >= 3.9",
+    "seaborn >= 0.13",
+    "pandas >= 2.2.2",
+    "niapy >= 2.5.1",
+    "scipy >= 1.13",
 ]
 
 [project.optional-dependencies]
