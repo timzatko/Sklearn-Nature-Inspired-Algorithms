@@ -28,6 +28,18 @@ Parameters
 - **verbose**: *int, default=0.* The level of the logging, possible values: 0, 1, 2.
 - **n_jobs**: *int, default=None.* Number of jobs to run in parallel. None means 1 unless in a joblib.parallel_backend context. -1 means using all processors. This affects the number of jobs when evaluating a model for one _individual_ (for one individual there might be more model evaluations because of cross-validation) not for the whole population - current implementations of nature-inspired algorithms do not support multiprocessing. You will benefit from multiprocessing only if you use cross-validation.
 
+.. note::
+    The parallelization is process-based, sklearn handles it via `joblib <https://joblib.readthedocs.io/>`_ and its default ``loky`` backend.
+    In environments where spawning processes is not possible (e.g. when Python is embedded in another application, such as a .NET host via pythonnet), it may fail with errors like ``OSError: [Errno 22] Invalid argument``.
+    In such environments either leave ``n_jobs=None``, or use joblib's threading backend, which avoids spawning processes:
+
+    .. code-block:: python
+
+        from joblib import parallel_backend
+
+        with parallel_backend('threading'):
+            search.fit(X, y)
+
 The following parameters: **scoring**, **refit**, **verbose**, **pre_dispatch**, **error_score**, **return_train_score**, are inherited from sklearn's `BaseSearchCV <https://github.com/scikit-learn/scikit-learn/blob/1045d16ec13b1cab7878e7555538573d1884aad3/sklearn/model_selection/_search.py#L410>`_ and are the same as for the GridSearchCV.
 Refer to the GridSearchCV `documentation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html>`_ to find out what they do.
 
