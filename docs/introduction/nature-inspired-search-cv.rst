@@ -31,6 +31,9 @@ Parameters
 The following parameters: **scoring**, **refit**, **verbose**, **pre_dispatch**, **error_score**, **return_train_score**, are inherited from sklearn's `BaseSearchCV <https://github.com/scikit-learn/scikit-learn/blob/1045d16ec13b1cab7878e7555538573d1884aad3/sklearn/model_selection/_search.py#L410>`_ and are the same as for the GridSearchCV.
 Refer to the GridSearchCV `documentation <https://scikit-learn.org/stable/modules/generated/sklearn.model_selection.GridSearchCV.html>`_ to find out what they do.
 
+When using multi-metric **scoring** (e.g. ``scoring={'AUC': 'roc_auc', 'F1': 'f1_macro'}``), the **refit** parameter must be set to the name of the metric to optimize (e.g. ``refit='F1'``).
+Unlike the exhaustive search in the GridSearchCV, the nature-inspired algorithm needs a single objective to optimize, so ``refit=False`` is not supported with multi-metric scoring.
+
 
 Glossary
 --------

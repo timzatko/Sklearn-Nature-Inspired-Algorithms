@@ -22,7 +22,7 @@ class NatureInspiredSearchCV(BaseSearchCV):
         self.__param_grid = ParamGrid(self.param_grid)
         self.__algorithm = self.__get_algorithm(self.algorithm, self.population_size, self.random_state)
         self.__print_run_search_log()
-        problem = ParameterSearch(evaluate_candidates, self.__param_grid)
+        problem = ParameterSearch(evaluate_candidates, self.__param_grid, self.__get_score_key())
 
         self.optimization_logs_ = []
 
@@ -82,6 +82,20 @@ class NatureInspiredSearchCV(BaseSearchCV):
         self.optimization_logs_ = None
         self.cv_orig = None
         self.n_splits = None
+
+    def __get_score_key(self):
+        # with a single metric cv_results contain the 'mean_test_score' key,
+        # with multi-metric scoring there is one score column per metric instead
+        if self.scoring is None or isinstance(self.scoring, str) or callable(self.scoring):
+            return 'mean_test_score'
+
+        # unlike the exhaustive search in GridSearchCV, the nature-inspired algorithm
+        # needs a single objective to optimize, it is defined by the refit metric
+        if not isinstance(self.refit, str):
+            raise ValueError('For multi-metric scoring, refit must be set to the name of the metric '
+                             'to optimize, e.g. refit="accuracy".')
+
+        return f'mean_test_{self.refit}'
 
     def __print_run_search_log(self):
         candidates = self.__param_grid.get_number_of_candidates()

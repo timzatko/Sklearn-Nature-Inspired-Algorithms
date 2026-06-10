@@ -65,6 +65,39 @@ class NatureInspiredSearchTestCase(unittest.TestCase):
 
         self.assertIn(search_clf.best_params_['class_weight'], param_grid['class_weight'])
 
+    def test_multi_metric_scoring(self):
+        # regression test for #23, with multi-metric scoring the cv_results
+        # do not contain 'mean_test_score', there is one score column per metric
+        # and the optimized metric is determined by refit
+        param_grid = {'max_depth': range(2, 5)}
+        scoring = {'AUC': 'roc_auc', 'F1': 'f1_macro'}
+
+        X, y = make_classification(n_samples=100, n_features=20, flip_y=0.5, random_state=42)
+
+        clf = DecisionTreeClassifier(random_state=42)
+        search_clf = NatureInspiredSearchCV(clf, param_grid, scoring=scoring, refit='F1', algorithm='hba',
+                                            max_n_gen=5, population_size=10, runs=2, random_state=42)
+        search_clf.fit(X, y)
+
+        self.assertIn('mean_test_AUC', search_clf.cv_results_)
+        self.assertIn('mean_test_F1', search_clf.cv_results_)
+        self.assertIn(search_clf.best_params_['max_depth'], param_grid['max_depth'])
+
+    def test_multi_metric_scoring_without_refit_metric(self):
+        # the nature-inspired algorithm needs a single objective to optimize,
+        # so multi-metric scoring requires refit to name the optimized metric
+        param_grid = {'max_depth': range(2, 5)}
+        scoring = {'AUC': 'roc_auc', 'F1': 'f1_macro'}
+
+        X, y = make_classification(n_samples=100, n_features=20, flip_y=0.5, random_state=42)
+
+        clf = DecisionTreeClassifier(random_state=42)
+        search_clf = NatureInspiredSearchCV(clf, param_grid, scoring=scoring, refit=False, algorithm='hba',
+                                            max_n_gen=5, population_size=10, runs=2, random_state=42)
+
+        with self.assertRaisesRegex(ValueError, 'refit must be set to the name of the metric'):
+            search_clf.fit(X, y)
+
     @staticmethod
     def get_classification_nature_inspired_search(search_clf_random_state=None):
         param_grid = {

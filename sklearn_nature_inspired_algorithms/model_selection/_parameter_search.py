@@ -6,9 +6,12 @@ from niapy.problems import Problem
 class ParameterSearch(Problem, ABC):
     evaluation_count = 0
 
-    def __init__(self, evaluate_candidates, param_grid):
+    def __init__(self, evaluate_candidates, param_grid, score_key='mean_test_score'):
         self.evaluate_candidates = evaluate_candidates
         self.param_grid = param_grid
+        # the cv_results key with the optimized score, with multi-metric
+        # scoring there is one score column per metric instead of 'mean_test_score'
+        self.score_key = score_key
         # the algorithms revisit the same candidates, caching the scores
         # avoids repeating the expensive cross-validation
         self.cache = {}
@@ -34,7 +37,7 @@ class ParameterSearch(Problem, ABC):
         if score is None:
             params = self.param_grid.get_params_from_solution_vec(solution_vec)
             cv_results = self.evaluate_candidates([params])
-            mean_test_score = cv_results['mean_test_score']
+            mean_test_score = cv_results[self.score_key]
             # we need to invert the score since we are doing
             # a minimization task
             score = -mean_test_score[self.evaluation_count]
