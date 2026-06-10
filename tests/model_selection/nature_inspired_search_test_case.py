@@ -1,4 +1,9 @@
+import io
 import unittest
+
+from contextlib import redirect_stdout
+
+from niapy.algorithms.basic import GeneticAlgorithm
 
 from sklearn_nature_inspired_algorithms.model_selection import NatureInspiredSearchCV
 
@@ -97,6 +102,46 @@ class NatureInspiredSearchTestCase(unittest.TestCase):
 
         with self.assertRaisesRegex(ValueError, 'refit must be set to the name of the metric'):
             search_clf.fit(X, y)
+
+    def test_all_supported_algorithms(self):
+        for algorithm in ['fa', 'ba', 'hba', 'hsaba', 'gwo']:
+            search_clf = self.get_tiny_nature_inspired_search(algorithm)
+
+            self.assertIn(search_clf.best_params_['max_depth'], range(2, 5))
+
+    def test_not_supported_algorithm(self):
+        with self.assertRaisesRegex(ValueError, 'is not in supported algorithms'):
+            self.get_tiny_nature_inspired_search('invalid-algorithm')
+
+    def test_custom_algorithm(self):
+        algorithm = GeneticAlgorithm()
+        algorithm.set_parameters(NP=10, Ts=4, Mr=0.25)
+
+        search_clf = self.get_tiny_nature_inspired_search(algorithm)
+
+        self.assertIn(search_clf.best_params_['max_depth'], range(2, 5))
+
+    def test_verbose_logging(self):
+        out = io.StringIO()
+
+        with redirect_stdout(out):
+            self.get_tiny_nature_inspired_search('hba', verbose=2)
+
+        self.assertIn('Iteration', out.getvalue())
+        self.assertIn('Run 1/1 finished', out.getvalue())
+
+    @staticmethod
+    def get_tiny_nature_inspired_search(algorithm, verbose=0):
+        param_grid = {'max_depth': range(2, 5)}
+
+        X, y = make_classification(n_samples=50, n_features=10, flip_y=0.5, random_state=42)
+
+        clf = DecisionTreeClassifier(random_state=42)
+        search_clf = NatureInspiredSearchCV(clf, param_grid, algorithm=algorithm, max_n_gen=3, max_stagnating_gen=2,
+                                            population_size=5, runs=1, random_state=42, verbose=verbose)
+        search_clf.fit(X, y)
+
+        return search_clf
 
     @staticmethod
     def get_classification_nature_inspired_search(search_clf_random_state=None):
