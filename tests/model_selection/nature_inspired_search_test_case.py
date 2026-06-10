@@ -48,6 +48,23 @@ class NatureInspiredSearchTestCase(unittest.TestCase):
 
         self.assertFalse(has_different)
 
+    def test_dict_like_parameters(self):
+        # regression test for #24, dict values are not hashable,
+        # so they cannot be used in the score cache key directly
+        param_grid = {
+            'class_weight': [{False: 1, True: 2}, {False: 1, True: 1}],
+            'max_depth': range(2, 5),
+        }
+
+        X, y = make_classification(n_samples=100, n_features=20, flip_y=0.5, random_state=42)
+
+        clf = DecisionTreeClassifier(random_state=42)
+        search_clf = NatureInspiredSearchCV(clf, param_grid, algorithm='hba', max_n_gen=5, population_size=10, runs=2,
+                                            random_state=42)
+        search_clf.fit(X, y)
+
+        self.assertIn(search_clf.best_params_['class_weight'], param_grid['class_weight'])
+
     @staticmethod
     def get_classification_nature_inspired_search(search_clf_random_state=None):
         param_grid = {

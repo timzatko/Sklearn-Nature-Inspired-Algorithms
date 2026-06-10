@@ -63,6 +63,29 @@ class ParamGridTestCase(unittest.TestCase):
             }
         )
 
+    def test_get_value_indices_from_solution_vec(self):
+        # the solution vectors are the same as in test_get_params_from_solution_vec,
+        # the indices point to the same values within the param grid
+        self.assertEqual(
+            self.param_grid.get_value_indices_from_solution_vec([0, 1, 0]),
+            (0, 9, 0)
+        )
+
+        self.assertEqual(
+            self.param_grid.get_value_indices_from_solution_vec([0.8, 0.89, 0.24]),
+            (0, 8, 0)
+        )
+
+        self.assertEqual(
+            self.param_grid.get_value_indices_from_solution_vec([0.8, 0.9, 0.25]),
+            (0, 9, 1)
+        )
+
+        self.assertEqual(
+            self.param_grid.get_value_indices_from_solution_vec([0.8, 0.5, 0.8]),
+            (0, 5, 3)
+        )
+
 
 if __name__ == '__main__':
     unittest.main()

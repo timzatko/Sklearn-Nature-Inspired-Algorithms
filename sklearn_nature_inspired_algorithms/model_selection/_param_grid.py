@@ -41,9 +41,20 @@ class ParamGrid:
 
         return params
 
+    def get_value_indices_from_solution_vec(self, solution_vec):
+        # the tuple of selected value indices uniquely identifies a candidate,
+        # and unlike the values themselves, it is always hashable
+        return tuple(self.__get_param_value_index(param_key, solution_vec) for param_key in self.param_grid)
+
     def __get_param_value(self, param_key, solution_vec):
+        param_value_index = self.__get_param_value_index(param_key, solution_vec)
+        return self.param_grid[param_key][param_value_index]
+
+    def __get_param_value_index(self, param_key, solution_vec):
         index = self.key_to_index_map[param_key]
         solution_value = solution_vec[index]
         param_value_count = len(self.param_grid[param_key])
-        param_value_index = min(math.floor(solution_value / (1 / param_value_count)), param_value_count - 1)
-        return self.param_grid[param_key][param_value_index]
+        # the solution value is from the [0, 1] interval, split it into equally
+        # sized buckets, one for each of the parameter values, min() handles
+        # the edge case when the solution value is exactly 1
+        return min(math.floor(solution_value / (1 / param_value_count)), param_value_count - 1)
