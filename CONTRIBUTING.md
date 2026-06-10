@@ -4,11 +4,11 @@
 
 ### Local development
 
-You will first need to clone the repository using git and place yourself in its directory:
+First, clone the repository with Git and move into its directory:
 
 ```shell script
-git clone git@github.com:timzatko/Sklearn-Nature-Inspired-Search.git
-cd Sklearn-Nature-Inspired-Search
+git clone git@github.com:timzatko/Sklearn-Nature-Inspired-Algorithms.git
+cd Sklearn-Nature-Inspired-Algorithms
 ```
 
 Create a virtual environment and install the package with dev dependencies:
@@ -19,13 +19,13 @@ source .venv/bin/activate
 pip install -e .[dev]
 ```
 
-Make sure that the tests are passing on your machine:
+Make sure the tests pass on your machine:
 
 ```shell script
 python -m unittest tests
 ```
 
-You can also run tests with test coverage and then print out the report.
+You can also run the tests with coverage and print the report:
 
 ```shell script
 coverage run --source=./sklearn_nature_inspired_algorithms -m unittest tests
@@ -34,21 +34,21 @@ coverage report -m
 
 ### Branching strategy
 
-This repository follows _trunk based development branching strategy_. You can read more about it [here](https://trunkbaseddevelopment.com/).
+This repository follows a _trunk-based development_ branching strategy. You can read more about it [here](https://trunkbaseddevelopment.com/).
 
 ## Releasing
 
-Use [semantic versioning](https://semver.org/) for versions.
+Use [semantic versioning](https://semver.org/) for releases.
 
 ### Bump version
 
-1. Bump version with
+1. Bump the version:
     ```shell script
     sh ./version.sh v0.1.1
     ```
-2. Push the created commit and a tag
+2. Push the generated commit and tag:
     ```shell script
     git push --tags
     ```
-   This will trigger a pipeline which will make a draft release.
-3. Publish the draft release, don't forget to edit release notes. Publishing the release will trigger the release pipeline which will publish the package to the [pypi](https://pypi.org) registry.
+   This triggers a pipeline that creates a draft release.
+3. Edit the release notes and publish the draft release. Publishing the release triggers the release pipeline, which publishes the package to the [PyPI](https://pypi.org) registry.
