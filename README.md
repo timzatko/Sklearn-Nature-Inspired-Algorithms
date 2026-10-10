@@ -75,7 +75,7 @@ If you do not want to use one of the predefined algorithm configurations, you ca
 This gives you more control over the algorithm behavior.
 Refer to the NiaPy [documentation](https://niapy.readthedocs.io/en/latest/) and [examples](https://github.com/NiaOrg/NiaPy/tree/master/examples) for usage details.
 
-__Note:__ Use NiaPy version 2.5.1 or later.
+__Note:__ Use NiaPy version 2.7.0 or later.
 
 ```python
 from niapy.algorithms.basic import GeneticAlgorithm
